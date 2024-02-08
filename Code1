@@ -1,0 +1,25 @@
+# data_analysis_toolkit.py
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+class DataAnalysisToolkit:
+    def __init__(self, data):
+        self.data = data
+
+    def show_summary_statistics(self):
+        summary_stats = self.data.describe()
+        print(summary_stats)
+
+    def plot_histogram(self, column_name):
+        plt.hist(self.data[column_name])
+        plt.title("Histogram of " + column_name)
+        plt.xlabel(column_name)
+        plt.ylabel("Frequency")
+        plt.show()
+
+# Example usage:
+data = pd.read_csv("data.csv")
+toolkit = DataAnalysisToolkit(data)
+toolkit.show_summary_statistics()
+toolkit.plot_histogram("age")
